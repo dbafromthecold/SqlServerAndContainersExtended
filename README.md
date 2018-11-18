@@ -1,2 +1,1 @@
-# SqlServerAndContainersExtended
-SQL Server and Containers Extended Session
+### Slides & code for my SQL Server & Containers extended presentation
