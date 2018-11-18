@@ -17,6 +17,18 @@
 
 To give an overview of the different options available to run SQL Server in containers
 
+---
+
+### Agenda
+
+
+---
+
+### Tools
+
+
+---
+
 ### Container Definition
 
 Containers wrap a piece of software in a complete filesystem that contains everything needed to run: code, runtime, system tools, system libraries – anything that can be installed on a server. This guarantees that the software will always run the same, regardless of its environment. <br>
