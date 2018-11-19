@@ -4,7 +4,7 @@
 
 # create your own dockerlogin.txt file with your docker hub password in it
 # log into the docker hub
-PasswordFile=~/git/SQLServerAndContainers/dockerlogin.txt
+PasswordFile=~/git/SqlServerAndContainersExtended/dockerlogin.txt
 cat $PasswordFile | docker login --username dbafromthecold --password-stdin
 
 
@@ -36,4 +36,4 @@ docker search dbafromthecold
 
 
 # clean up
-docker rmi dbafromthecold/testsqlrepository:linuxdemo testimage1
+docker rmi dbafromthecold/testsqlrepository:linuxdemo

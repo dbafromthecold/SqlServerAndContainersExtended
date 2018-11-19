@@ -21,11 +21,8 @@ To give an overview of the different options available to run SQL Server in cont
 
 ### Agenda
 
-
----
-
-### Tools
-
+<b>Part One</b> - Introduction to docker (demos) </br>
+<b>Part Two</b> - Running containers in Azure
 
 ---
 

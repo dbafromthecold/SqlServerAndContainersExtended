@@ -10,6 +10,11 @@ docker volume prune
 
 
 
+# check volumes
+docker volume ls
+
+
+
 # create the named volume
 docker volume create sqlserver
 
@@ -22,10 +27,10 @@ docker volume ls
 
 # spin up a container with named volume mapped
 docker run -d -p 15999:1433 \
-    -v sqlserver:/sqlserver \
-        --env ACCEPT_EULA=Y --env SA_PASSWORD=Testing1122 \
-            --name testcontainer9 \
-                microsoft/mssql-server-linux:latest
+-v sqlserver:/sqlserver \
+--env ACCEPT_EULA=Y --env SA_PASSWORD=Testing1122 \
+--name testcontainer3 \
+mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
 
 
 
@@ -37,11 +42,7 @@ docker ps -a
 # create database on the named volume
 mssql-cli -S 'localhost,15999' -U sa -P Testing1122 
 
-CREATE DATABASE [DatabaseE]
-ON PRIMARY
-    (NAME = N'DatabaseE', FILENAME = N'/sqlserver/DatabaseE.mdf')
-LOG ON
-    (NAME = N'DatabaseE_log', FILENAME = N'/sqlserver/DatabaseE_log.ldf');
+CREATE DATABASE [DatabaseB] ON PRIMARY (NAME = N'DatabaseB', FILENAME = N'/sqlserver/DatabaseB.mdf') LOG ON (NAME = N'DatabaseB_log', FILENAME = N'/sqlserver/DatabaseB_log.ldf');
 
                 
 
@@ -51,16 +52,16 @@ SELECT [name] FROM sys.databases;
 
 
 # create a test table and insert some data
-USE [DatabaseE];
+USE [DatabaseB];
 
-CREATE TABLE dbo.TestTable2(ID INT);
+CREATE TABLE dbo.TestTable(ID INT);
 
-INSERT INTO dbo.TestTable2(ID) SELECT TOP 200 1 FROM sys.all_columns;
+INSERT INTO dbo.TestTable(ID) SELECT TOP 200 1 FROM sys.all_columns;
 
 
 
 # query the test table
-SELECT COUNT(*) AS Records FROM dbo.TestTable2;
+SELECT COUNT(*) AS Records FROM dbo.TestTable;
 
 
 
@@ -69,8 +70,8 @@ EXIT
 
 
 # blow away container
-docker kill testcontainer9
-docker rm testcontainer9
+docker kill testcontainer3
+docker rm testcontainer3
 
 
 
@@ -81,10 +82,10 @@ docker volume ls
 
 # spin up another container
 docker run -d -p 16100:1433 \
-    -v sqlserver:/sqlserver \
-        --env ACCEPT_EULA=Y --env SA_PASSWORD=Testing1122 \
-            --name testcontainer10 \
-                microsoft/mssql-server-linux:latest
+-v sqlserver:/sqlserver \
+--env ACCEPT_EULA=Y --env SA_PASSWORD=Testing1122 \
+--name testcontainer4 \
+mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
 
 
 
@@ -93,12 +94,13 @@ docker ps -a
 
 
 
-# now attach the database
+# connect to the sql instance
 mssql-cli -S 'localhost,16100' -U sa -P Testing1122
 
-CREATE DATABASE [DatabaseE] ON 
-(FILENAME = '/sqlserver/DatabaseE.mdf'),
-(FILENAME = '/sqlserver/DatabaseE_log.ldf') FOR ATTACH;
+
+
+# now attach the database
+CREATE DATABASE [DatabaseB] ON (FILENAME = '/sqlserver/DatabaseB.mdf'),(FILENAME = '/sqlserver/DatabaseB_log.ldf') FOR ATTACH;
 
 
 
@@ -108,9 +110,9 @@ SELECT [name] FROM sys.databases;
 
 
 # query the test table       
-USE [DatabaseE];
+USE [DatabaseB];
 
-SELECT COUNT(*) AS Records FROM dbo.TestTable2;
+SELECT COUNT(*) AS Records FROM dbo.TestTable;
 
 
 
@@ -119,6 +121,6 @@ EXIT
 
 
 # clean up
-docker kill testcontainer10
-docker rm testcontainer10
+docker kill testcontainer4
+docker rm testcontainer4
 docker volume rm sqlserver

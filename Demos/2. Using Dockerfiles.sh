@@ -9,7 +9,7 @@ docker images
 
 
 # build custom image
-Filepath = ~/git/SQLServerAndContainersDemo/Dockerfiles/Dockerfile1
+Filepath=~/git/SqlServerAndContainersExtended/Dockerfiles/Dockerfile1
 docker build -t testimage1 $Filepath
 
 
@@ -21,8 +21,10 @@ docker images
 
 # run container from custom image
 docker run -d -p 15555:1433 \
-    --name testcontainer5 \
-        testimage1
+--env ACCEPT_EULA=Y \
+--env SA_PASSWORD=Testing1122 \
+--name testcontainer2 \
+testimage1
 
 
 
@@ -32,7 +34,7 @@ docker ps -a
 
 
 # connect to sql instance
-mssql-cli -S localhost,15555 -U sa
+mssql-cli -S localhost,15555 -U sa -P Testing1122
 
 
 
@@ -47,5 +49,3 @@ exit
 
 # clean up
 docker rm $(docker ps -a -q) -f
-
-docker rmi testimage2

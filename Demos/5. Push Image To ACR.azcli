@@ -23,20 +23,8 @@ docker images
 
 
 
-# run container locally to confirm
-docker run -d -p 15789:1433 \
---env ACCEPT_EULA=Y \
---env SA_PASSWORD=Testing1122 \
---name testcontainer testimage
-
-
-# confirm container running
-docker ps -a
-
-
-
 # tag local image with ACR name
-docker tag testimage testcontainerregistry01.azurecr.io/testsqlrepository:v4
+docker tag testimage1 testcontainerregistry01.azurecr.io/testsqlrepository:v4
 
 
 
@@ -63,5 +51,5 @@ az acr repository show-tags --name TestContainerRegistry01 --repository testsqlr
 #clean up local
 docker kill testcontainer
 docker rm testcontainer
-docker rmi testcontainerregistry01.azurecr.io/testsqlrepository:v4 testimage
+docker rmi testcontainerregistry01.azurecr.io/testsqlrepository:v4 testimage1
 
