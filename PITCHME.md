@@ -114,19 +114,6 @@ Container image build service<br>
 
 <img src="assets/images/ACR-GetRegistryDetails.png">
 
----?code=assets/code/dockerfile&lang=bash&title=Dockerfile
-
-@[1](Building from microsoft image)
-@[3](Create directory within container)
-@[5-6](Copy database files into container)
-@[8-10](Set SQL default directories)
-@[12-13](Healthcheck (10 seconds))
-@[14-16](Create database from files)
-
----?code=assets/code/acr_build_image.azcli&lang=bash&title=Build Container Image
-
-<img src="assets/images/ACR-BuildImage.png">
-
 ---?code=assets/code/acr_tag_image.azcli&lang=bash&title=Tag Image
 
 <img src="assets/images/ACR-TagImage.png">

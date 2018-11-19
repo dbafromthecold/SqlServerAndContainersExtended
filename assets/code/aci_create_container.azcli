@@ -1,6 +1,6 @@
 az container create \
   --resource-group containers1 \
-  --image testcontainerregistry01.azurecr.io/devsqlimage:latest \
+  --image testcontainerregistry01.azurecr.io/testsqlrepository:latest \
   --registry-username $(az keyvault secret show \
 				--vault-name aptestkeyvault01 \
 				--name testcontainerregistry01-pull-usr \
