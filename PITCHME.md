@@ -392,8 +392,8 @@ New ways of thinking
 
 ### Resources
 
-https://github.com/dbafromthecold/ContainersInTheCloud
+https://github.com/dbafromthecold/SqlServerAndContainersExtended
 
 @snap[east]
-![QR](assets/images/ContainersInTheCloudQr.png)
+![QR](assets/images/SqlServerAndContainersExtended.png)
 @snapend
