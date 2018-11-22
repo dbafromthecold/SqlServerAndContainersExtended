@@ -393,6 +393,7 @@ New ways of thinking
 ### Resources
 
 https://github.com/dbafromthecold/SqlServerAndContainersExtended <br>
+<br>
 https://dbafromthecold.com/2017/03/15/summary-of-my-container-series/ 
 
 @snap[east]
