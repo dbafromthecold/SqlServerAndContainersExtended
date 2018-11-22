@@ -5,7 +5,6 @@
 
 # log into the docker hub
 Password=$(< /home/dbafromthecold/git/SqlServerAndContainersExtended/dockerlogin.txt)
-
 echo $Password | docker login --username dbafromthecold --password-stdin
 
 
