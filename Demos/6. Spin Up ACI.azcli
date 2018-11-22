@@ -1,3 +1,8 @@
+
+# https://dbafromthecold.com/2018/05/23/deploying-azure-container-instances/
+
+
+
 # check azure-cli is installed
 az --version
 
@@ -12,8 +17,10 @@ az login
 az acr list --resource-group containers1
 
 
+
 # list repositories under registry
 az acr repository list --name TestContainerRegistry01 --output table
+
 
 
 # Create container

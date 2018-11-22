@@ -1,8 +1,6 @@
 
 # https://dbafromthecold.com/2017/06/28/persisting-data-in-docker-containers-part-two/
 
-## Named Volumes
-
 
 
 # remove unused volumes

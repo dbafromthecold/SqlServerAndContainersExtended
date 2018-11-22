@@ -1,3 +1,8 @@
+
+# https://dbafromthecold.com/2017/11/15/running-sql-server-in-kubernetes-on-azure-container-services-aks-ii/
+
+
+
 # check azure-cli is installed
 az --version
 
@@ -18,23 +23,13 @@ kubectl get nodes
 
 
 
-# Get client ID
-az aks show --resource-group containers1 --name mySQLK8sCluster1 --query "servicePrincipalProfile.clientId" --output tsv
-
-
-
-# Get ACR ID
-az acr show --name TestContainerRegistry01 --resource-group containers1 --query "id" --output tsv
-
-
-
-# Create role to allow deployments
-az role assignment create --assignee <<CLIENTID>> --role Reader --scope <<ACRID>>
-
-
-
 # set location to .yml file
-cd /home/dbafromthecold/git/ContainersInTheCloud/Demos
+cd /home/dbafromthecold/git/SqlServerAndContainersExtended/Demos
+
+
+
+# view yaml file
+cat sqlserver2.yml
 
 
 
@@ -66,6 +61,20 @@ kubectl get service
 # remote into container
 kubectl get pods
 kubectl exec -it podname bash
+
+
+
+# navigate to files
+cd /var/opt/sqlserver
+
+
+
+# view files
+ls -al
+
+
+# exit pod
+exit
 
 
 

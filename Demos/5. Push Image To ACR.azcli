@@ -1,3 +1,8 @@
+
+# https://dbafromthecold.com/2018/05/09/pushing-sql-server-images-to-the-azure-container-registry/
+
+
+
 # check azure-cli is installed
 az --version
 
@@ -49,7 +54,5 @@ az acr repository show-tags --name TestContainerRegistry01 --repository testsqlr
 
 
 #clean up local
-docker kill testcontainer
-docker rm testcontainer
 docker rmi testcontainerregistry01.azurecr.io/testsqlrepository:v4 testimage1
 

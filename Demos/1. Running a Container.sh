@@ -2,6 +2,7 @@
 # https://dbafromthecold.com/2016/11/16/sql-server-containers-part-one/
 
 
+
 # verify docker is responding to commands
 docker version
 

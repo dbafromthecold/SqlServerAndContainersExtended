@@ -8,6 +8,11 @@ docker images
 
 
 
+# view docker file
+cat ~/git/SqlServerAndContainersExtended/Dockerfiles/Dockerfile1/Dockerfile
+
+
+
 # build custom image
 Filepath=~/git/SqlServerAndContainersExtended/Dockerfiles/Dockerfile1
 docker build -t testimage1 $Filepath

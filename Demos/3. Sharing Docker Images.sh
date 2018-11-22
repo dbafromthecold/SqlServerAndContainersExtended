@@ -2,10 +2,9 @@
 # https://dbafromthecold.com/2016/11/30/sql-server-containers-part-three/
 
 
-# create your own dockerlogin.txt file with your docker hub password in it
+
 # log into the docker hub
-PasswordFile=~/git/SqlServerAndContainersExtended/dockerlogin.txt
-cat $PasswordFile | docker login --username dbafromthecold --password-stdin
+docker login --username dbafromthecold
 
 
 
@@ -26,7 +25,6 @@ docker images
 
 # push image to the hub
 docker push dbafromthecold/testsqlrepository:linuxdemo
-
 
 
 
