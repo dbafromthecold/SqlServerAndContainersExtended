@@ -133,202 +133,6 @@ Container image build service<br>
 
 ---
 
-## Azure Container Instances
-
----
-
-### Azure Container Instances
-
-@size[0.8em](https://azure.microsoft.com/en-us/services/container-instances/)
-
-<img src="assets/images/AzureContainerInstances.png">
-
----
-
-### Azure Container Instances
-
-Running containers without servers <br>
-No need to manage VMs <br>
-Quick deployment <br>
-Deployed via the CLI, powershell, or Azure Portal <br>
-Billed by the second
-
----
-
-### Options
-
-Linux & Windows containers <br>
-Containers exposed directly to the internet <br>
-IP Address and FQDN <br>
-Hypervisor level isolation <rb>
-Persistent storage <br>
-Azure files shares
-
----
-
-### Container Groups
-
-Similar in concept to K8s pods <br>
-Multiple containers running on the same host <br>
-Share IP address, containers exposed on ports <br>
-Supports mounting external volumes
-
----?code=assets/code/aci_get_credentials.azcli&lang=bash&title=Get Credentials
-
-@[1](Enable admin)
-@[3](Show credentials)
-
----?code=assets/code/aci_create_keyvault.azcli&lang=bash&title=Create Keyvault
-
-@[1-2](Create keyvault)
-@[4-10](Create service principle and store password)
-@[12-16](Store username)
-
----?code=assets/code/aci_create_container.azcli&lang=bash&title=Create Container
-
-@[2](From custom image)
-@[3](Specifying the resource group)
-@[4-7](Retrieving the username stored in keyvault)
-@[8-11](Retrieving the password stored in keyvault)
-@[12](Setting the container name)
-@[13](Specifying resources available to container)
-@[14](Setting the required environment variables)
-@[15](Specifying the IP address type)
-@[16](Specifying the port to connect to)
-
----?code=assets/code/aci_get_container_status.azcli&lang=bash&title=Get Container Status
-
-<p align=center>
-<img src="assets/images/ACI-GetContainerStatus.png">
-</p>
-
----
-
-### Connect to Azure Container Instance
-
-<img src="assets/images/ACI-ConnectToContainer.png">
-
----
-
-## Demo
-
----
-
-## Azure Container Services
-
----
-
-### Azure Container Services
-
-@size[0.8em](https://azure.microsoft.com/en-us/services/container-service/)
-
-<img src="assets/images/AzureContainerServices.png">
-
----
-
-### Azure Container Services
-
-<br><b>Two flavours</b> <br>
-Azure Container Services (ACS) <br>
-Azure Container Services (AKS) <br>
-<br>
-ACS allows multiple orchestrators <br>
-AKS is specifically built to implement Kubernetes
-
----
-
-### Kubernetes
-
-<img src="assets/images/AKS-KubernetesLogo.png" style="float: right"/>
-
-<br>
-@size[0.9em](Open source) <br>
-@size[0.9em](Deployed as a cluster) <br>
-@size[0.9em](Pods hold containers on nodes) <br>
-@size[0.9em](Services provide external access) <br>
-@size[0.9em](Kubectl used to manage cluster) <br>
-
----
-
-### Azure Container Services (AKS)
-
-Simplifies deployment of Kubernetes clusters <br>
-Cluster can be spun up with one line of code <br>
-Applications deployed to cluster via yaml files <br>
-Managed by Azure-CLI/powershell and kubectl <br>
-
----?code=assets/code/aks_create_cluster.azcli&lang=bash&title=Create Cluster
-
-@[2](Specify the resource group)
-@[3](Give the cluster a name)
-@[4](Specify the number of nodes)
-@[5](Generate keys so that we can connect)
-
-<img src="assets/images/AKS-CreateCluster.png">
-
----?code=assets/code/aks_install_kubectl.azcli&lang=bash&title=Install Kubectl
-
-<img src="assets/images/AKS-InstallKubectl.png">
-
----?code=assets/code/aks_get_cluster_credentials.azcli&lang=bash&title=Get Cluster Credentials
-
-<img src="assets/images/AKS-GetClusterCredentials.png">
-
----?code=assets/code/aks_view_cluster_nodes.azcli&lang=bash&title=View Cluster Nodes
-
-<img src="assets/images/AKS-ViewNodes.png">
-
----?code=assets/code/aks_create_role.azcli&lang=bash&title=Create Role
-
-@[1-5](Get cluster ID)
-@[7-11](Get Azure Container Registry ID)
-@[13-16](Create role to allow access to ACR)
-
----?code=assets/code/aks_yaml_file.yaml&lang=yaml&title=AKS yaml file
-
-@[3-6](Metadata of deployment)
-@[8](Number of replicas)
-@[13-23](Pod declaration)
-@[15](Pod name)
-@[16](Image to be used)
-@[17-18](Port on pod)
-@[19-23](Setting environment variables)
-@[24-35](Service)
-@[26-27](Metadata)
-@[29-32](Port on service to port on pod)
-@[33-35](Selector)
-@[35](External IP address)
-
----?code=assets/code/aks_deploy_to_cluster.azcli&lang=bash&title=Deploy to Cluster
-
-<img src="assets/images/AKS-DeployToCluster.png">
-
----?code=assets/code/aks_deployment_info.azcli&lang=bash&title=View Deployment
-
-@[1](View deployments)
-@[2](View nodes)
-@[3](View services)
-
-<img src="assets/images/AKS-DeploymentInformation.png">
-
----
-
-### Connect to SQL Server
-
-<img src="assets/images/AKS-ConnectToSqlServer.png">
-
----
-
-### Kubernetes Dashboard
-
-<img src="assets/images/AKS-KubernetesDashboard.png">
-
----
-
-## Demo
-
----
-
 ## Case Study
 
 ---
@@ -387,6 +191,104 @@ Update to existing test applications <br>
 Trial and error to integrate with Octopus deploy <br>
 New ways of thinking 
 
+
+---
+
+# Kubernetes
+
+---
+
+## What is Kubernetes?
+
+@quote[Kubernetes is a portable, extensible open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available](kubernetes.io)
+
+---
+
+## Kubernetes
+
+<img src="assets/images/KubernetesLogo.png" style="float: right"/>
+
+<br>
+@size[0.9em](Open source orchestration engine) <br>
+@size[0.9em](Designed by Google) <br>
+@size[0.9em](Hosted by the Cloud Native Computing Foundation) <br>
+@size[0.9em](Kubernetes v1.0 was released on July 21, 2015)
+
+---
+
+## Master
+
+<img src="assets/images/master-128.png" style="float: right"/>
+
+Components for controlling the cluster<br>
+
+@ul
+- @size[0.9em](kube-apiserver)<br>
+- @size[0.9em](etcd)<br>
+- @size[0.9em](kube-scheduler)<br>
+- @size[0.9em](kube-controller-manager)<br>
+- @size[0.9em](cloud-controller-manager)<br>
+@ulend
+
+---
+
+## Nodes
+
+<img src="assets/images/node-128.png" style="float: right"/>
+
+Running and maintaining pods<br>
+
+@ul
+- @size[0.9em](kubelet)<br>
+- @size[0.9em](kube-proxy)<br>
+- @size[0.9em](Docker)
+@ulend
+
+---
+
+## Pods
+
+<img src="assets/images/master-128.png" style="float: right"/>
+
+Smallest deployable units of computing<br>
+Group of one or more containers<br>
+Shared storage/network<br>
+Holds specifications of containers
+
+---
+
+## Services
+
+<img src="assets/images/svc-128.png" style="float: right"/>
+
+An abstraction over a set of pods<br>
+Provides a stable networking endpoint<br>
+Different types: -<br>
+
+@ul
+- @size[0.9em](ClusterIP)<br>
+- @size[0.9em](NodePort)<br>
+- @size[0.9em](LoadBalancer)<br>
+- @size[0.9em](External Name)
+@ul
+
+---?code=assets/code/deployment_yaml_file.yaml&lang=yaml&title=Example yaml file
+
+@[3-4](Metadata of deployment)
+@[6](Number of replicas)
+@[11-21](Pod declaration)
+@[13](Pod name)
+@[14](Image to be used)
+@[15-16](Port)
+@[17-21](Setting environment variables)
+@[22-35](Service)
+@[24-25](Metadata)
+@[27-30](Port on service to port on pod)
+@[31-33](External IP address)
+
+---
+
+# Demo
 
 ---
 
