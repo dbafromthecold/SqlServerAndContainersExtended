@@ -8,6 +8,22 @@ docker version
 
 
 
+# open powershell session
+pwsh
+
+
+
+# list tags
+$repo = Invoke-Webrequest https://mcr.microsoft.com/v2/mssql/server/tags/list
+$repo.content
+
+
+
+# exit powershell session
+exit
+
+
+
 # pull image down to local repository
 docker pull mcr.microsoft.com/mssql/server:2019-CTP2.3-ubuntu
 
