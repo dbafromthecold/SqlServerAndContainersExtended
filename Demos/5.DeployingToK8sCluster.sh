@@ -1,3 +1,4 @@
+
 # https://dbafromthecold.com/2017/11/15/running-sql-server-in-kubernetes-on-azure-container-services-aks-ii/
 
 
