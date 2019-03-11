@@ -9,7 +9,7 @@ docker version
 
 
 # pull image down to local repository
-docker pull mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
+docker pull mcr.microsoft.com/mssql/server:2019-CTP2.3-ubuntu
 
 
 
@@ -23,7 +23,7 @@ docker run -d -p 15111:1433 \
 --env ACCEPT_EULA=Y \
 --env SA_PASSWORD=Testing1122 \
 --name testcontainer1 \
-mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
+mcr.microsoft.com/mssql/server:2019-CTP2.3-ubuntu
 
 
 

@@ -28,7 +28,7 @@ docker run -d -p 15999:1433 \
 -v sqlserver:/sqlserver \
 --env ACCEPT_EULA=Y --env SA_PASSWORD=Testing1122 \
 --name testcontainer3 \
-mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
+mcr.microsoft.com/mssql/server:2019-CTP2.3-ubuntu
 
 
 
@@ -83,7 +83,7 @@ docker run -d -p 16100:1433 \
 -v sqlserver:/sqlserver \
 --env ACCEPT_EULA=Y --env SA_PASSWORD=Testing1122 \
 --name testcontainer4 \
-mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
+mcr.microsoft.com/mssql/server:2019-CTP2.3-ubuntu
 
 
 

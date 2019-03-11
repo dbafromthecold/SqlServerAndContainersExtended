@@ -1,5 +1,5 @@
 
-FROM mcr.microsoft.com/mssql/server:2019-CTP2.1-ubuntu
+FROM mcr.microsoft.com/mssql/server:2019-CTP2.3-ubuntu
 
 
 RUN mkdir /var/opt/sqlserver
@@ -13,8 +13,8 @@ ENV MSSQL_BACKUP_DIR="/var/opt/sqlserver"
 ENV MSSQL_DATA_DIR="/var/opt/sqlserver"
 ENV MSSQL_LOG_DIR="/var/opt/sqlserver"
 
+COPY attach-db.sh /var/opt/sqlserver
 
-HEALTHCHECK --interval=10s  \
-CMD /opt/mssql/bin/sqlservr & \
-	/opt/mssql-tools/bin/sqlcmd -S . -U sa -P $SA_PASSWORD \
-		-Q "CREATE DATABASE [DatabaseA] ON (FILENAME = '/var/opt/sqlserver/DatabaseA.mdf'),(FILENAME = '/var/opt/sqlserver/DatabaseA_log.ldf') FOR ATTACH"
+RUN chmod +x /var/opt/sqlserver/attach-db.sh
+
+ENTRYPOINT /var/opt/sqlserver/attach-db.sh & /opt/mssql/bin/sqlservr

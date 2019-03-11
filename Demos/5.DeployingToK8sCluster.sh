@@ -28,17 +28,17 @@ kubectl get nodes
 
 
 # navigate to yaml file
-cd C:\git\dbafromthecold\SQLServerAndKubernetes\Demos\
+cd ~/git/SqlServerAndContainersExtended/Demos/
 
 
 
 # view sql yaml file
-cat sqlserver2.yaml
+cat sqlserver.yaml
 
 
 
 # deploy to cluster
-kubectl apply -f sqlserver2.yaml
+kubectl apply -f sqlserver.yaml
 
 
 
@@ -83,7 +83,7 @@ kubectl get pods -o wide
 
 
 # delete pod
-kubectl delete pod sqlserver2-b4b9cc5f7-fn7th
+kubectl delete pod PODNAME
 
 
 
